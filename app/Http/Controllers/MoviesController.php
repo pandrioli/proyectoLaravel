@@ -26,8 +26,20 @@ class MoviesController extends Controller
     return view('agregarPelicula');
   }
 
-  public function agregarPelicula() {
-    return "Pelicula agregada con éxito";
+  public function agregarPelicula(Request $request) {
+    $this->validate($request, [
+        'title' => 'required|max:255',
+        'rating' => 'required|numeric|between:1,10',
+        'length' => 'required|numeric'
+    ], [
+        'title.required' => 'El titulo es requerido'
+    ]);
+
+    $pelicula = new Movie($request->all());
+    $release_date = $request->input('anio').'-'.$request->input('mes').'-'.$request->input('dia');
+    $pelicula->release_date = date('Y-m-d', strtotime($release_date));
+    $pelicula->save();
+    return redirect()->route('all_movies');
   }
 
 }

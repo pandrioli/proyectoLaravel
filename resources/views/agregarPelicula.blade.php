@@ -2,9 +2,10 @@
 
 @section('content')
         <form id="agregarPelicula" name="agregarPelicula" method="POST">
+            {{ csrf_field() }}
             <div>
                 <label for="titulo">Titulo</label>
-                <input type="text" name="titulo" id="titulo"/>
+                <input type="text" name="title" id="titulo"/>
             </div>
             <div>
                 <label for="rating">Rating</label>
@@ -12,11 +13,11 @@
             </div>
             <div>
                 <label for="premios">Premios</label>
-                <input type="text" name="premios" id="premios"/>
+                <input type="text" name="awards" id="premios"/>
             </div>
             <div>
                 <label for="duracion">Duracion</label>
-                <input type="text" name="duracion" id="duracion"/>
+                <input type="text" name="length" id="duracion"/>
             </div>
             <div>
                 <label>Fecha de Estreno</label>
@@ -40,5 +41,11 @@
                 </select>
             </div>
             <input type="submit" value="Agregar Pelicula" name="submit"/>
+            <ul>
+              @forelse ($errors->All() as $error)
+                <li>{{$error}}</li>
+              @empty
+              @endforelse
+            </ul>
         </form>
 @endsection

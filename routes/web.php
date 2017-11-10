@@ -24,7 +24,7 @@ Route::get('/resultado/{numero1}/{numero2?}', function ($numero1, $numero2 = nul
   : "$numero1 x $numero2 = ".($numero1 * $numero2);
 });
 
-Route::get('/peliculas', 'MoviesController@mostrarPeliculas');
+Route::get('/peliculas', 'MoviesController@mostrarPeliculas')->name('all_movies');
 Route::get('/peliculas/{id}', 'MoviesController@buscarPeliculaId');
 Route::get('/peliculas/buscar/{nombre}', 'MoviesController@buscarPeliculaNombre');
 Route::get('/agregarPelicula', 'MoviesController@nuevaPelicula');
