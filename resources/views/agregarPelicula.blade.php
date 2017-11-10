@@ -5,19 +5,19 @@
             {{ csrf_field() }}
             <div>
                 <label for="titulo">Titulo</label>
-                <input type="text" name="title" id="titulo"/>
+                <input type="text" name="title" id="titulo" value="{{old('title')}}"/>
             </div>
             <div>
                 <label for="rating">Rating</label>
-                <input type="text" name="rating" id="rating"/>
+                <input type="text" name="rating" id="rating" value="{{old('rating')}}"/>
             </div>
             <div>
                 <label for="premios">Premios</label>
-                <input type="text" name="awards" id="premios"/>
+                <input type="text" name="awards" id="premios" value="{{old('awards')}}"/>
             </div>
             <div>
                 <label for="duracion">Duracion</label>
-                <input type="text" name="length" id="duracion"/>
+                <input type="text" name="length" id="duracion" value="{{old('duracion')}}"/>
             </div>
             <div>
                 <label>Fecha de Estreno</label>
