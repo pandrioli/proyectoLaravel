@@ -1,0 +1,22 @@
+<?php
+
+return [
+
+
+
+  'welcome' => 'Welcome'
+
+
+
+
+
+
+
+
+
+
+
+];
+
+
+ ?>
