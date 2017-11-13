@@ -4,29 +4,65 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actor;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ActorController extends Controller
 {
+    use SoftDeletes;
+    public function show($id) {
+      $actor = Actor::Find($id);
+      return view('verActor', compact('actor'));
+    }
     public function directory() {
       $listaActores = Actor::All();
-      return $this->getView($listaActores);
-    }
-    public function show($id) {
-      $listaActores = [];
-      $actor = Actor::Find($id);
-      if ($actor !== NULL) $listaActores[] = $actor;
-      return $this->getView($listaActores);
+      return view('actores', compact('listaActores'));
     }
     public function search(Request $request) {
       $nombre = $request->input('nombre');
       $listaActores = Actor::Where('first_name', 'like', '%'.$nombre.'%')
         ->orWhere('last_name', 'like', '%'.$nombre.'%')
         ->get();
-      return $this->getView($listaActores);
+        return view('actores', compact('listaActores'));
     }
 
-    private function getView($listaActores) {
-      return view('actores', compact('listaActores'));
+    public function new() {
+      $actor = new Actor();
+      return view('editarActor', compact('actor'));
     }
+
+    public function edit($id) {
+
+      $actor = Actor::find($id);
+      return view('editarActor', compact('actor'));
+    }
+
+    public function add(Request $request) {
+      $this->validar($request);
+      $actor = new Actor($request->all());
+      $actor->save();
+      return redirect()->route('all_actors');
+    }
+
+    public function update($id, Request $request) {
+      $this->validar($request);
+      $actor = Actor::find($id);
+      $actor->update($request->all());
+      $actor->save();
+      return redirect()->route('all_actors');
+    }
+
+    public function delete($id) {
+      $actor = Actor::find($id);
+      $actor->delete();
+      return redirect()->route('all_actors');
+    }
+
+    private function validar($request) {
+      $this->validate($request, [
+          'first_name' => 'required',
+          'last_name' => 'required'
+      ]);
+    }
+
 
 }

@@ -8,14 +8,20 @@
     <input type="text" name="nombre" value="">
     <input type="submit" name="buscar" value="Buscar">
   </form>
-  <form action="/actores" method="get">
-    {{ csrf_field() }}
-    <input type="submit" name="todos" value="Ver todos">
-  </form>
+  <a href="/actores">Ver todos</a>
+  <a href="/agregarActor">Agregar actor</a>
   <h3>Resultados</h3>
   <ul>
     @forelse ($listaActores as $actor)
-      <li>{{$actor->getNombreCompleto()}}</li>
+      <li>
+        <a href="/actores/{{$actor->id}}"><h3>{{$actor->getNombreCompleto()}}</h3></a>
+        <form action="/actores/{{$actor->id}}" method="post">
+          {{ csrf_field() }}
+          {{ method_field('DELETE')}}
+          <a href="/actores/{{$actor->id}}/editar">editar</a>
+          <input type="submit" name="borrar" value="eliminar">
+        </form>
+      </li>
     @empty
       No hay resultados
     @endforelse

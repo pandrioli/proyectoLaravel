@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use App\Movie;
 class MoviesController extends Controller
 {
-  public function buscarPeliculaId($id) {
-    $peliculas = [];
+  public function verPelicula($id) {
     $pelicula = Movie::find($id);
-    if ($pelicula !== NULL) $peliculas[]=$pelicula;
-    return view('peliculas', compact('peliculas'));
+    return view('verPelicula', compact('pelicula'));
   }
   public function buscarPeliculaNombre($nombre) {
     $peliculas = Movie::Where('title', 'like', '%'.$nombre.'%')->get();

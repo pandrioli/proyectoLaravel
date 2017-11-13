@@ -25,11 +25,16 @@ Route::get('/resultado/{numero1}/{numero2?}', function ($numero1, $numero2 = nul
 });
 
 Route::get('/peliculas', 'MoviesController@mostrarPeliculas')->name('all_movies');
-Route::get('/peliculas/{id}', 'MoviesController@buscarPeliculaId');
+Route::get('/peliculas/{id}', 'MoviesController@verPelicula');
 Route::get('/peliculas/buscar/{nombre}', 'MoviesController@buscarPeliculaNombre');
 Route::get('/agregarPelicula', 'MoviesController@nuevaPelicula');
 Route::post('/agregarPelicula', 'MoviesController@agregarPelicula');
 
-Route::get('/actores', 'ActorController@directory');
+Route::get('/actores', 'ActorController@directory')->name('all_actors');
 Route::get('/actores/{id}', 'ActorController@show');
+Route::get('/actores/{id}/editar', 'ActorController@edit');
+Route::put('/actores/{id}/editar', 'ActorController@update');
 Route::post('/actores/buscar', 'ActorController@search');
+Route::get('/agregarActor', 'ActorController@new');
+Route::post('/agregarActor', 'ActorController@add');
+Route::delete('/actores/{id}', 'ActorController@delete');
