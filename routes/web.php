@@ -38,3 +38,5 @@ Route::post('/actores/buscar', 'ActorController@search');
 Route::get('/agregarActor', 'ActorController@new');
 Route::post('/agregarActor', 'ActorController@add');
 Route::delete('/actores/{id}', 'ActorController@delete');
+
+Route::get('/genre/{id}', 'GenreController@show');
