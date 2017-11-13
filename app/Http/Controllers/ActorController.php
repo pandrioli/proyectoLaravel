@@ -46,8 +46,7 @@ class ActorController extends Controller
     public function update($id, Request $request) {
       $this->validar($request);
       $actor = Actor::find($id);
-      $actor->update($request->all());
-      $actor->save();
+      $actor->fill($request->all())->save();
       return redirect()->route('all_actors');
     }
 
