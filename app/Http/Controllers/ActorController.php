@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actor;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ActorController extends Controller
 {
-    use SoftDeletes;
     public function show($id) {
       $actor = Actor::Find($id);
       return view('verActor', compact('actor'));

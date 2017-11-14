@@ -9,7 +9,7 @@
     @endif
     Nombre <input type="text" name="first_name" value="{{old('first_name', $actor->first_name)}}"><br>
     Apellido <input type="text" name="last_name" value="{{old('last_name', $actor->last_name)}}"><br>
-    <input type="submit" name="guardar" value="Guardar">
+    <input class="button" type="submit" name="guardar" value="Guardar">
   </form>
   <ul>
     @forelse($errors->All() as $error)

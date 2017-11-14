@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Genre;
 class MoviesController extends Controller
 {
   public function verPelicula($id) {
@@ -21,7 +22,8 @@ class MoviesController extends Controller
   }
 
   public function nuevaPelicula() {
-    return view('agregarPelicula');
+    $generos = Genre::all();
+    return view('agregarPelicula', compact('generos'));
   }
 
   public function agregarPelicula(Request $request) {

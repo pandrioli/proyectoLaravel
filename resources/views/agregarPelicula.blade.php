@@ -8,6 +8,15 @@
                 <input type="text" name="title" id="titulo" value="{{old('title')}}"/>
             </div>
             <div>
+              Genero
+              <select name="genre_id">
+                @foreach ($generos as $genero)
+                  <option value="{{$genero->id}}">{{$genero->name}}</option>
+                @endforeach
+              </select>
+
+            </div>
+            <div>
                 <label for="rating">Rating</label>
                 <input type="text" name="rating" id="rating" value="{{old('rating')}}"/>
             </div>
@@ -40,7 +49,7 @@
                     <?php } ?>
                 </select>
             </div>
-            <input type="submit" value="Agregar Pelicula" name="submit"/>
+            <input class = "button" type="submit" value="Agregar Pelicula" name="submit"/>
             <ul>
               @forelse ($errors->All() as $error)
                 <li>{{$error}}</li>

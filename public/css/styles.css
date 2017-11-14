@@ -1,0 +1,46 @@
+body {
+  font-family: monospace;
+  font-size: 16px;
+  margin: 10px;
+}
+
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+li li {
+  padding: 0;
+  border: none;
+}
+
+a {
+  color: black;
+}
+
+input {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.button {
+  text-decoration: none;
+  padding: 5px;
+  margin: 10px 0px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+  font-family: monospace;
+  cursor: pointer;
+}
