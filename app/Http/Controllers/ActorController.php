@@ -12,14 +12,14 @@ class ActorController extends Controller
       return view('verActor', compact('actor'));
     }
     public function directory() {
-      $listaActores = Actor::All();
+      $listaActores = Actor::paginate(2);
       return view('actores', compact('listaActores'));
     }
     public function search(Request $request) {
       $nombre = $request->input('nombre');
       $listaActores = Actor::Where('first_name', 'like', '%'.$nombre.'%')
         ->orWhere('last_name', 'like', '%'.$nombre.'%')
-        ->get();
+        ->paginate(2);
         return view('actores', compact('listaActores'));
     }
 

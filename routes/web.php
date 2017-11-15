@@ -39,3 +39,20 @@ Route::get('/agregarActor', 'ActorController@new');
 Route::post('/agregarActor', 'ActorController@add');
 Route::delete('/actores/{id}', 'ActorController@delete');
 Route::get('/genre/{id}', 'GenreController@show');
+
+Route::get('/productos', function(){
+  $productos = App\Product::all();
+  foreach ($productos as $producto) {
+    echo $producto->name.' : '.$producto->category->name.'<br>';
+  }
+});
+
+Route::get('/categorias', function(){
+  $categorias = App\Category::all();
+  foreach ($categorias as $categoria) {
+    echo '<h3>'.$categoria->name.'</h3>';
+    foreach ($categoria->products as $producto) {
+      echo $producto->name.'<br>';
+    }
+  }
+});

@@ -8,7 +8,7 @@ use App\Genre;
 class MoviesController extends Controller
 {
   public function verPelicula($id) {
-    $pelicula = Movie::find($id);
+    $pelicula = Movie::find($id)->with('actors')->first();
     return view('verPelicula', compact('pelicula'));
   }
   public function buscarPeliculaNombre($nombre) {

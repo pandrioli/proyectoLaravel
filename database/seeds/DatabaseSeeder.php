@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        \DB::table('categories')->insert([
+          ['name' => 'Bazar'],
+          ['name' => 'Comida'],
+          ['name' => 'Electronicos']
+        ]);
+        $product = factory(App\Product::class)->times(50)->create();
     }
 }

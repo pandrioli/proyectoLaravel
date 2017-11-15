@@ -26,4 +26,5 @@
     @endforelse
     <br>
   </ul>
+  {{ $listaActores->links() }}
 @endsection

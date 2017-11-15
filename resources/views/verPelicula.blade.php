@@ -1,7 +1,16 @@
 @extends('base')
 
 @section('content')
-  <pre>
-    {{ print_r($pelicula->getAttributes()) }}
-  </pre>
+  <h1>{{$pelicula->title}}</h1>
+  <ul>
+    <li>{{$pelicula->genre->name}} - {{$pelicula->length}} min</li>
+    <li>
+      <h3>Actores</h3>
+      <ul>
+        @foreach ($pelicula->actors as $actor)
+          <li>{{$actor->getNombreCompleto()}}</li>
+        @endforeach
+      </ul>
+    </li>
+  </ul>
 @endsection
